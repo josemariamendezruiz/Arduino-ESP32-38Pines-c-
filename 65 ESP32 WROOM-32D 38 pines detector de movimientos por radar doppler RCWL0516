@@ -1,0 +1,33 @@
+/*
+    ESP32 DETECTOR DE MOVIMIENTO POR RADAR DOPPLER SENSOR RCWL-0516
+    AUTOR : JOSE MARIA MENDEZ RUIZ
+    MAYO 2022
+    CODIGO LIBRE PARA UTILIZAR COMO QUIERAS
+*/
+
+// DECLARAMOS LAS VARIABLES QUE VAMOS A UTILIZAR
+int Pin_Led = 2;     // Este es el pin que tiene asociado un led en la propia placa del microcontrolador
+int Pin_Radar = 5;   // Este pin es el que recibe la señal del sensor
+ 
+void setup()
+{
+  // ************** DECLARAMOS LOS PINES EN LOS MODOS QUE VAMOS A UTILIZARLOS  *************
+  pinMode(Pin_Led, OUTPUT);
+  pinMode(Pin_Radar, INPUT);
+}
+ 
+void loop()
+{
+  int radar = digitalRead(Pin_Radar); // LEEMOS EL VALOR QUE RECIBIMOS DEL SENSOR
+ 
+  //********** CUANDO SE RECIBE SEÑAL DEL SENSOR ****************
+  if (radar == HIGH)
+  {
+    digitalWrite(Pin_Led, HIGH);
+    delay(50);
+  }
+  else
+  {
+    digitalWrite(Pin_Led, LOW);
+  }
+}
